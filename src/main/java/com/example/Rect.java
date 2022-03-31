@@ -1,13 +1,13 @@
 package com.example;
 
-public class Rectangle {
+public class Rect {
     int length;
     int width;
     int border_Rectangle;
     int x;
     int y;
 
-    public Rectangle(int length, int width, int border_Rectangle, int x, int y){
+    public Rect(int length, int width, int border_Rectangle, int x, int y){
         this.length = length;
         this.width = width;
         this.border_Rectangle = border_Rectangle;

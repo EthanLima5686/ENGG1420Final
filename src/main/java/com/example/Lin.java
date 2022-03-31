@@ -1,13 +1,13 @@
 package com.example;
 
-public class Line {
+public class Lin {
     int startX;
     int startY;
     int endX;
     int endY;
     int border_Line;
 
-    public Line(int startX, int startY, int endX, int endY, int border_Line){
+    public Lin(int startX, int startY, int endX, int endY, int border_Line){
         this.startX = startX;
         this.startY = startY;
         this.endX = endX;

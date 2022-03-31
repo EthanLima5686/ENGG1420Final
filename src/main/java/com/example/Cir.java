@@ -1,12 +1,12 @@
 package com.example;
 
-public class Circle {
+public class Cir {
     int radius;
     int x_circle;
     int y_circle;
     int border_Circle;
 
-    public Circle(int radius, int x_circle, int y_circle, int border_Circle){
+    public Cir(int radius, int x_circle, int y_circle, int border_Circle){
         this.radius = radius;
         this.x_circle = x_circle;
         this.y_circle = y_circle;
