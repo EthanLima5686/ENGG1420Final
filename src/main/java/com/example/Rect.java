@@ -63,6 +63,54 @@ public class Rect {
         return y;
     }
 
+    public void setRed(int red){
+        this.red = red;
+    }
+
+    public int getRed(int red){
+        return red;
+    }
+
+    public void setBlue(int blue){
+        this.blue = blue;
+    }
+
+    public int getBlue(int blue){
+        return blue;
+    }
+
+    public void setGreen(int green){
+        this.green = green;
+    }
+
+    public int getGreen(int green){
+        return green;
+    }
+
+    public void setRed_Border(int red_border){
+        this.red_border = red_border;
+    }
+
+    public int getRed_Border(int red_border){
+        return red_border;
+    }
+
+    public void setBlue_Border(int blue_border){
+        this.blue_border = blue_border;
+    }
+
+    public int getBlue_Border(int blue_border){
+        return blue_border;
+    }
+
+    public void setGreen_Border(int green_border){
+        this.green_border = green_border;
+    }
+
+    public int getGreen_Border(int green_border){
+        return green_border;
+    }
+
     public Rectangle Draw(){
         Rectangle r = new Rectangle(x, y, x+length, y+width);
         r.setFill(Color.rgb(red, green, blue));
