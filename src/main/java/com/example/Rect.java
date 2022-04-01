@@ -54,6 +54,8 @@ public class Rect {
     public int getY(int y){
         return y;
     }
+
+    Rect Rectangle = new Rect(5, 10, 5, 2, 4);
 }
 
 

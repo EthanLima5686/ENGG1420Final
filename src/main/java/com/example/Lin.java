@@ -54,5 +54,7 @@ public class Lin {
     public int getBorder_Line(int border_Line){
         return border_Line;
     }
+
+    Lin Line = new Lin(10, 20, 30, 40, 5);
     
 }
