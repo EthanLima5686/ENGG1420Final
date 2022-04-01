@@ -1,10 +1,19 @@
 package com.example;
 
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+
 public class Cir {
     int radius;
     int x_circle;
     int y_circle;
     int border_Circle;
+    int r = 0;
+    int g = 0;
+    int b = 0;
+    int r_border = 0;
+    int g_border = 255;
+    int b_border = 0;
 
     public Cir(int radius, int x_circle, int y_circle, int border_Circle){
         this.radius = radius;
@@ -45,5 +54,19 @@ public class Cir {
         return border_Circle;
     }
 
-    Cir Circle = new Cir(5, 10, 15, 10);
+    public Circle Draw(){
+        Circle c = new Circle(x_circle, y_circle, radius);
+        c.setFill(Color.rgb(r, g, b));
+        return c;
+    }
+
+    public Circle DrawBorder() throws Exception{
+        if (border_Circle < 0){
+            throw new Exception("Invalid border thickness");
+        } else {
+            Circle c_border = new Circle(x_circle, y_circle, radius+border_Circle);
+            c_border.setFill(Color.rgb(r_border, g_border, b_border));
+            return c_border;
+        }
+    }
 }

@@ -117,15 +117,16 @@ public class Rect {
         return r;
     }
 
-    public Rectangle DrawBorder(){
+    public Rectangle DrawBorder() throws Exception{
         if(border_Rectangle < 0)
         {
             throw new Exception("Invalid border thickness");
+        } else {
+            Rectangle rBorder = new Rectangle(x-border_Rectangle, y-border_Rectangle, x+length+(2*border_Rectangle), y+width+(2*border_Rectangle));
+            rBorder.setFill(Color.rgb(red_border, blue_border, green_border));
+            return rBorder;
         }
-        Rectangle rBorder = new Rectangle(x-border_Rectangle, y-border_Rectangle, x+length+border_Rectangle, y+width+border_Rectangle);
-        rBorder.setFill(Color.rgb(red_border, blue_border, green_border));
-        return rBorder;
     }
-
+}
 
 
