@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.*;
 import javafx.stage.Stage;
-
+import java.lang.Thread;
 import java.io.IOException;
 
 /**
@@ -21,6 +21,7 @@ public class App extends Application {
 
     private static Scene scene;
     private Stage stage;
+    public int FPS = 10; // Default 10, can be altered
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -45,8 +46,14 @@ public class App extends Application {
     }
 
     private class MyTimer extends AnimationTimer {
+        int frame = 0;
         int x = 0;
         public void handle(long now) {
+            frame++;
+            if (frame > 500){
+                stop();
+                System.exit(0);
+            }
             Group root = new Group();
             root.getChildren().clear();
             Rectangle r = new Rectangle(x,25,250,250);
@@ -56,9 +63,10 @@ public class App extends Application {
             scene = new Scene(root, 1000, 500, Color.WHITE);
             stage.setScene(scene);
             stage.show();
-            if (x > 500){
-                stop();
-                System.exit(0);
+            try {
+                Thread.sleep(1000 / FPS);
+            } catch (Exception e) {
+                System.out.println(e);
             }
         }
     }
