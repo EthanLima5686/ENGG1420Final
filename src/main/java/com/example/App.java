@@ -39,6 +39,7 @@ public class App extends Application {
         int frame = 0;
         Rect rect = new Rect(300, 300, 50, 50, 10);
         Cir circ = new Cir(100, 225, 225, 20);
+        Lin line = new Lin(200, 200, 500, 300, 50);
         public void handle(long now) {
             frame++;
             if (frame > 500){
@@ -47,6 +48,7 @@ public class App extends Application {
             }
             Group root = new Group();
             root.getChildren().clear();
+            /*
             try{
                 Rectangle r_border = rect.DrawBorder();
                 root.getChildren().add(r_border);
@@ -63,6 +65,16 @@ public class App extends Application {
             }
             Circle c = circ.Draw();
             root.getChildren().add(c);
+            */
+            try{
+                Shape l_border = line.DrawBorder();
+                root.getChildren().add(l_border);
+            } catch (Exception e){
+                System.out.println(e);
+            }
+            Line l = line.Draw();
+            root.getChildren().add(l);
+
             scene = new Scene(root, 1000, 500, Color.WHITE);
             stage.setScene(scene);
             stage.show();
