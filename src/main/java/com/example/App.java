@@ -37,8 +37,8 @@ public class App extends Application {
 
     private class MyTimer extends AnimationTimer {
         int frame = 0;
-        int x = 0;
         Rect rect = new Rect(300, 300, 50, 50, 10);
+        Cir circ = new Cir(100, 225, 225, 20);
         public void handle(long now) {
             frame++;
             if (frame > 500){
@@ -55,7 +55,14 @@ public class App extends Application {
             }
             Rectangle r = rect.Draw();
             root.getChildren().add(r);
-            x++;
+            try{
+                Circle c_border = circ.DrawBorder();
+                root.getChildren().add(c_border);
+            } catch (Exception e){
+                System.out.println(e);
+            }
+            Circle c = circ.Draw();
+            root.getChildren().add(c);
             scene = new Scene(root, 1000, 500, Color.WHITE);
             stage.setScene(scene);
             stage.show();
