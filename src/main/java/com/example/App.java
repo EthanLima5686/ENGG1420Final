@@ -18,7 +18,7 @@ public class App extends Application {
 
     private static Scene scene;
     private Stage stage;
-    public int FPS = 10; // Default 10, can be altered
+    public int FPS = 50; // Default 10, can be altered
 
     @Override
     public void start(Stage stage) throws IOException {
