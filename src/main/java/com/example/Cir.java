@@ -44,4 +44,6 @@ public class Cir {
     public int getBorder_Circle(int border_Circle){
         return border_Circle;
     }
+
+    Cir Circle = new Cir(5, 10, 15, 10);
 }
