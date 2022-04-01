@@ -1,13 +1,21 @@
 package com.example;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
 
 public class Rect {
     int length;
     int width;
-    int border_Rectangle;
+    int border_Rectangle = 0;
     int x;
     int y;
+    int red = 0;
+    int blue = 255;
+    int green = 0;
+    int red_border = 255;
+    int blue_border = 0;
+    int green_border = 0;
 
-    public Rect(int length, int width, int border_Rectangle, int x, int y){
+    public Rect(int length, int width, int x, int y, int border_Rectangle){
         this.length = length;
         this.width = width;
         this.border_Rectangle = border_Rectangle;
@@ -55,8 +63,21 @@ public class Rect {
         return y;
     }
 
-    Rect Rectangle = new Rect(5, 10, 5, 2, 4);
-}
+    public Rectangle Draw(){
+        Rectangle r = new Rectangle(x, y, x+length, y+width);
+        r.setFill(Color.rgb(red, green, blue));
+        return r;
+    }
+
+    public Rectangle DrawBorder(){
+        if(border_Rectangle < 0)
+        {
+            throw new Exception("Invalid border thickness");
+        }
+        Rectangle rBorder = new Rectangle(x-border_Rectangle, y-border_Rectangle, x+length+border_Rectangle, y+width+border_Rectangle);
+        rBorder.setFill(Color.rgb(red_border, blue_border, green_border));
+        return rBorder;
+    }
 
 
 
