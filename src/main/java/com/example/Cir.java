@@ -54,6 +54,54 @@ public class Cir {
         return border_Circle;
     }
 
+    public void setR(int r){
+        this.r = r;
+    }
+
+    public int getR(int r){
+        return r;
+    }
+
+    public void setG(int g){
+        this.g = g;
+    }
+
+    public int getG(int g){
+        return g;
+    }
+
+    public void setB(int b){
+        this.b = b;
+    }
+
+    public int getB(int b){
+        return b;
+    }
+
+    public void setR_Border(int r_border){
+        this.r_border = r_border;
+    }
+
+    public int getR_Border(int r_border){
+        return r_border;
+    }
+
+    public void setG_Border(int g_border){
+        this.g_border = g_border;
+    }
+
+    public int getG_Border(int g_border){
+        return g_border;
+    }
+
+    public void setB_Border(int b_border){
+        this.b_border = b_border;
+    }
+
+    public int getB_border(int b_border){
+        return b_border;
+    }
+
     public Circle Draw(){
         Circle c = new Circle(x_circle, y_circle, radius);
         c.setFill(Color.rgb(r, g, b));
