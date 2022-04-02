@@ -48,7 +48,6 @@ public class App extends Application {
             }
             Group root = new Group();
             root.getChildren().clear();
-            /*
             try{
                 Rectangle r_border = rect.DrawBorder();
                 root.getChildren().add(r_border);
@@ -65,7 +64,6 @@ public class App extends Application {
             }
             Circle c = circ.Draw();
             root.getChildren().add(c);
-            */
             try{
                 Shape l_border = line.DrawBorder();
                 root.getChildren().add(l_border);

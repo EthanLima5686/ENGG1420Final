@@ -15,9 +15,9 @@ public class Lin {
     int r = 125;
     int g = 125;
     int b = 125;
-    int r_border = 10;
-    int g_border = 10;
-    int b_border = 10;
+    int r_border = 50;
+    int g_border = 50;
+    int b_border = 50;
 
     public Lin(int startX, int startY, int endX, int endY, int border_Line){
         this.startX = startX;
@@ -85,6 +85,7 @@ public class Lin {
         });
         Shape temp = Shape.union(circ1, poly);
         Shape border = Shape.union(temp, circ2);
+        border.setFill(Color.rgb(r_border, g_border, b_border));
         return border;
     }
 }
