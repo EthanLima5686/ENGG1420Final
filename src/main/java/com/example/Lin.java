@@ -126,10 +126,10 @@ public class Lin {
         Circle circ2 = new Circle(endX, endY, border_Line);
         Polygon poly = new Polygon();
         poly.getPoints().addAll(new Double[]{
-            (double)startX, (double)(startY + border_Line + 1),
-            (double)startX, (double)(startY - border_Line - 1),
-            (double)endX, (double)(endY - border_Line - 1),
-            (double)endX, (double)(endY + border_Line + 1)
+            (double)startX, (double)(startY + border_Line),
+            (double)startX, (double)(startY - border_Line),
+            (double)endX, (double)(endY - border_Line),
+            (double)endX, (double)(endY + border_Line)
         });
         Shape temp = Shape.union(circ1, poly);
         Shape border = Shape.union(temp, circ2);

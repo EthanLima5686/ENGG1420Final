@@ -39,7 +39,7 @@ public class App extends Application {
         int frame = 0;
         Rect rect = new Rect(300, 300, 50, 50, 10);
         Cir circ = new Cir(100, 225, 225, 20);
-        Lin line = new Lin(200, 200, 500, 300, 50);
+        Lin line = new Lin(200, 200, 500, 300, 2);
         public void handle(long now) {
             frame++;
             if (frame > 500){
