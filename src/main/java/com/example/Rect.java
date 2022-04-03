@@ -2,7 +2,7 @@ package com.example;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 
-public class Rect {
+public class Rect extends MasterShape {
     int length;
     int width;
     int border_Rectangle = 0;
@@ -16,6 +16,7 @@ public class Rect {
     int green_border = 0;
 
     public Rect(int length, int width, int x, int y, int border_Rectangle){
+        super(x, y);
         this.length = length;
         this.width = width;
         this.border_Rectangle = border_Rectangle;

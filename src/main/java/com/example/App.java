@@ -8,6 +8,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.stage.Stage;
 import java.lang.Thread;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.io.IOException;
 
 /**
@@ -37,41 +40,33 @@ public class App extends Application {
 
     private class MyTimer extends AnimationTimer {
         int frame = 0;
+        int frames = 1000;
         Rect rect = new Rect(300, 300, 50, 50, 10);
         Cir circ = new Cir(100, 225, 225, 20);
         Lin line = new Lin(200, 200, 500, 300, 2);
+        List<MasterShape> shapesList = new ArrayList<>();
+
         public void handle(long now) {
+            shapesList.add(rect);
+            shapesList.add(circ);
+            shapesList.add(line);
             frame++;
-            if (frame > 500){
+            if (frame > frames){
                 stop();
                 System.exit(0);
             }
             Group root = new Group();
             root.getChildren().clear();
-            try{
-                Rectangle r_border = rect.DrawBorder();
-                root.getChildren().add(r_border);
-            } catch (Exception e){
-                System.out.println(e);
+            for (MasterShape shape : shapesList){
+                try {
+                    Shape s = shape.DrawBorder();
+                    root.getChildren().add(s);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+                Shape s = shape.Draw();
+                root.getChildren().add(s);
             }
-            Rectangle r = rect.Draw();
-            root.getChildren().add(r);
-            try{
-                Circle c_border = circ.DrawBorder();
-                root.getChildren().add(c_border);
-            } catch (Exception e){
-                System.out.println(e);
-            }
-            Circle c = circ.Draw();
-            root.getChildren().add(c);
-            try{
-                Shape l_border = line.DrawBorder();
-                root.getChildren().add(l_border);
-            } catch (Exception e){
-                System.out.println(e);
-            }
-            Line l = line.Draw();
-            root.getChildren().add(l);
 
             scene = new Scene(root, 1000, 500, Color.WHITE);
             stage.setScene(scene);

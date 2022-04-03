@@ -3,7 +3,7 @@ package com.example;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-public class Cir {
+public class Cir extends MasterShape {
     int radius;
     int x_circle;
     int y_circle;
@@ -16,6 +16,7 @@ public class Cir {
     int b_border = 0;
 
     public Cir(int radius, int x_circle, int y_circle, int border_Circle){
+        super(x_circle, y_circle);
         this.radius = radius;
         this.x_circle = x_circle;
         this.y_circle = y_circle;

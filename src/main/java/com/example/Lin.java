@@ -6,7 +6,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
 
-public class Lin {
+public class Lin extends MasterShape{
     int startX;
     int startY;
     int endX;
@@ -20,6 +20,7 @@ public class Lin {
     int b_border = 50;
 
     public Lin(int startX, int startY, int endX, int endY, int border_Line){
+        super(startX, startY);
         this.startX = startX;
         this.startY = startY;
         this.endX = endX;
