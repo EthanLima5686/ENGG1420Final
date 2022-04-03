@@ -117,24 +117,41 @@ public class Lin extends MasterShape{
     }
 
     public Line Draw(){
-        Line lin = new Line(startX, startY, endX, endY);
-        lin.setStroke(Color.rgb(r, g, b));
-        return lin;
+        if (!this.hidden){
+            Line lin = new Line(startX, startY, endX, endY);
+            lin.setStroke(Color.rgb(r, g, b));
+            return lin;
+        } else {
+            return null;
+        }
     }
 
     public Shape DrawBorder(){
-        Circle circ1 = new Circle(startX, startY, border_Line);
-        Circle circ2 = new Circle(endX, endY, border_Line);
-        Polygon poly = new Polygon();
-        poly.getPoints().addAll(new Double[]{
-            (double)startX, (double)(startY + border_Line),
-            (double)startX, (double)(startY - border_Line),
-            (double)endX, (double)(endY - border_Line),
-            (double)endX, (double)(endY + border_Line)
-        });
-        Shape temp = Shape.union(circ1, poly);
-        Shape border = Shape.union(temp, circ2);
-        border.setFill(Color.rgb(r_border, g_border, b_border));
-        return border;
+        if (!this.hidden){
+            Circle circ1 = new Circle(startX, startY, border_Line);
+            Circle circ2 = new Circle(endX, endY, border_Line);
+            Polygon poly = new Polygon();
+            poly.getPoints().addAll(new Double[]{
+                (double)startX, (double)(startY + border_Line),
+                (double)startX, (double)(startY - border_Line),
+                (double)endX, (double)(endY - border_Line),
+                (double)endX, (double)(endY + border_Line)
+            });
+            Shape temp = Shape.union(circ1, poly);
+            Shape border = Shape.union(temp, circ2);
+            border.setFill(Color.rgb(r_border, g_border, b_border));
+            return border;
+        } else {
+            return null;
+        }
+    }
+
+    public void ChangeColour(Color color){
+        this.r = (int)Math.round(color.getRed() * 255);
+        this.g = (int)Math.round(color.getGreen() * 255);
+        this.b = (int)Math.round(color.getBlue() * 255);
+    }
+    public void Hide(){
+        this.hidden = true;
     }
 }

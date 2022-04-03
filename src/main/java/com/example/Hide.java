@@ -7,4 +7,8 @@ public class Hide extends Effect{
     public Hide(int start){
         super(start);
     }
+
+    public void EffectTrigger(MasterShape shape){
+        shape.Hide();
+    }
 }

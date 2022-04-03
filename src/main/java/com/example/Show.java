@@ -7,4 +7,8 @@ public class Show extends Effect{
     public Show(int start){
         super(start);
     }
+
+    public void EffectTrigger(MasterShape shape){
+        shape.Show();
+    }
 }

@@ -3,10 +3,14 @@ import javafx.scene.paint.Color;
 
 public class ChangeColor extends Effect{
     
-    Color changeColor;
+    Color changeColour;
 
-    public ChangeColor(int start, Color changeColor){
+    public ChangeColor(int start, Color changeColour){
         super(start);
-        this.changeColor = changeColor;
+        this.changeColour = changeColour;
+    }
+
+    public void EffectTrigger(MasterShape shape){
+        shape.ChangeColour(changeColour);
     }
 }

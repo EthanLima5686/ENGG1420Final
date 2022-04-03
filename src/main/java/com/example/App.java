@@ -39,13 +39,14 @@ public class App extends Application {
 
     private class MyTimer extends AnimationTimer {
         int frame = 0;
-        int frames = 1000;
+        int frames = 500;
         Rect rect = new Rect(300, 300, 50, 50, 10);
         Cir circ = new Cir(100, 225, 225, 20);
         Lin line = new Lin(200, 200, 500, 300, 2);
         List<MasterShape> shapesList = new ArrayList<>();
 
         public void handle(long now) {
+            shapesList.clear(); // Saves a lot of GPU
             shapesList.add(rect);
             shapesList.add(circ);
             shapesList.add(line);
@@ -59,12 +60,14 @@ public class App extends Application {
             for (MasterShape shape : shapesList){
                 try {
                     Shape s = shape.DrawBorder();
-                    root.getChildren().add(s);
+                    if (s != null)
+                        root.getChildren().add(s);
                 } catch (Exception e) {
                     System.out.println(e);
                 }
                 Shape s = shape.Draw();
-                root.getChildren().add(s);
+                if (s != null)
+                    root.getChildren().add(s);
             }
 
             scene = new Scene(root, 1000, 500, Color.WHITE);
@@ -75,6 +78,10 @@ public class App extends Application {
             } catch (Exception e) {
                 System.out.println(e);
             }
+            Hide hideEffect = new Hide(100);
+            hideEffect.TestEffect(frame, rect);
+            Show showEffect = new Show(200);
+            showEffect.TestEffect(frame, rect);
         }
     }
 }

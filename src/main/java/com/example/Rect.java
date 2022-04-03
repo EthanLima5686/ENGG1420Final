@@ -8,9 +8,9 @@ public class Rect extends MasterShape {
     int border_Rectangle = 0;
     int x;
     int y;
-    int red = 0;
-    int blue = 255;
-    int green = 0;
+    int r = 0;
+    int b = 255;
+    int g = 0;
     int red_border = 255;
     int blue_border = 0;
     int green_border = 0;
@@ -64,28 +64,28 @@ public class Rect extends MasterShape {
         return y;
     }
 
-    public void setRed(int red){
-        this.red = red;
+    public void setR(int r){
+        this.r = r;
     }
 
-    public int getRed(int red){
-        return red;
+    public int getR(int r){
+        return r;
     }
 
-    public void setBlue(int blue){
-        this.blue = blue;
+    public void setB(int b){
+        this.b = b;
     }
 
-    public int getBlue(int blue){
-        return blue;
+    public int getB(int b){
+        return b;
     }
 
-    public void setGreen(int green){
-        this.green = green;
+    public void setG(int g){
+        this.g = g;
     }
 
-    public int getGreen(int green){
-        return green;
+    public int getG(int g){
+        return g;
     }
 
     public void setRed_Border(int red_border){
@@ -113,20 +113,37 @@ public class Rect extends MasterShape {
     }
 
     public Rectangle Draw(){
-        Rectangle r = new Rectangle(x, y, x+length, y+width);
-        r.setFill(Color.rgb(red, green, blue));
-        return r;
+        if (!this.hidden){
+            Rectangle rec = new Rectangle(x, y, x+length, y+width);
+            rec.setFill(Color.rgb(r, g, b));
+            return rec;
+        } else {
+            return null;
+        }
     }
 
     public Rectangle DrawBorder() throws Exception{
-        if(border_Rectangle < 0)
-        {
-            throw new Exception("Invalid border thickness");
+        if (!this.hidden){
+            if(border_Rectangle < 0)
+            {
+                throw new Exception("Invalid border thickness");
+            } else {
+                Rectangle rBorder = new Rectangle(x-border_Rectangle, y-border_Rectangle, x+length+(2*border_Rectangle), y+width+(2*border_Rectangle));
+                rBorder.setFill(Color.rgb(red_border, blue_border, green_border));
+                return rBorder;
+            }
         } else {
-            Rectangle rBorder = new Rectangle(x-border_Rectangle, y-border_Rectangle, x+length+(2*border_Rectangle), y+width+(2*border_Rectangle));
-            rBorder.setFill(Color.rgb(red_border, blue_border, green_border));
-            return rBorder;
+            return null;
         }
+    }
+
+    public void ChangeColour(Color color){
+        this.r = (int)Math.round(color.getRed() * 255);
+        this.g = (int)Math.round(color.getGreen() * 255);
+        this.b = (int)Math.round(color.getBlue() * 255);
+    }
+    public void Hide(){
+        this.hidden = true;
     }
 }
 
