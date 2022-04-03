@@ -11,6 +11,7 @@ public class Cir extends MasterShape {
     int r = 0;
     int g = 0;
     int b = 0;
+    
     int r_border = 0;
     int g_border = 255;
     int b_border = 0;
@@ -104,18 +105,35 @@ public class Cir extends MasterShape {
     }
 
     public Circle Draw(){
-        Circle c = new Circle(x, y, radius);
-        c.setFill(Color.rgb(r, g, b));
-        return c;
+        if (!this.hidden){
+            Circle c = new Circle(x_circle, y_circle, radius);
+            c.setFill(Color.rgb(r, g, b));
+            return c;
+        } else {
+            return null;
+        }
     }
 
     public Circle DrawBorder() throws Exception{
-        if (border_Circle < 0){
-            throw new Exception("Invalid border thickness");
+        if (!this.hidden){
+            if (border_Circle < 0){
+                throw new Exception("Invalid border thickness");
+            } else {
+                Circle c_border = new Circle(x_circle, y_circle, radius+border_Circle);
+                c_border.setFill(Color.rgb(r_border, g_border, b_border));
+                return c_border;
+            }
         } else {
-            Circle c_border = new Circle(x, y, radius+border_Circle);
-            c_border.setFill(Color.rgb(r_border, g_border, b_border));
-            return c_border;
+            return null;
         }
+    }
+
+    public void ChangeColour(Color color){
+        this.r = (int)Math.round(color.getRed() * 255);
+        this.g = (int)Math.round(color.getGreen() * 255);
+        this.b = (int)Math.round(color.getBlue() * 255);
+    }
+    public void Hide(){
+        this.hidden = true;
     }
 }
