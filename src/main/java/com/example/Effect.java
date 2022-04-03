@@ -1,8 +1,18 @@
 package com.example;
 
 public class Effect {
-    
-    public Effect(int start, int frame){
-        
+    int start;
+    public Effect(int start){
+        this.start = start;
+    }
+
+    public void TestEffect(int frame, MasterShape shape){
+        if (frame > start){
+            EffectTrigger(shape);
+        }
+    }
+
+    public void EffectTrigger(MasterShape shape){
+        return;
     }
 }
