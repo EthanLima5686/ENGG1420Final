@@ -8,6 +8,8 @@ public class Rect extends MasterShape {
     int border_Rectangle = 0;
     int x;
     int y;
+    int xTrans;
+    int yTrans;
     int r = 0;
     int b = 255;
     int g = 0;
@@ -144,6 +146,10 @@ public class Rect extends MasterShape {
     }
     public void Hide(){
         this.hidden = true;
+    }
+    public void Jump(int xTrans, int yTrans){
+        x = xTrans;
+        y = yTrans;
     }
 }
 

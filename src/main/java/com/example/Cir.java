@@ -11,7 +11,6 @@ public class Cir extends MasterShape {
     int r = 0;
     int g = 0;
     int b = 0;
-    
     int r_border = 0;
     int g_border = 255;
     int b_border = 0;
@@ -135,5 +134,9 @@ public class Cir extends MasterShape {
     }
     public void Hide(){
         this.hidden = true;
+    }
+    public void Jump(int xTrans, int yTrans){
+        x = xTrans;
+        y = yTrans;
     }
 }

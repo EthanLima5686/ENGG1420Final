@@ -82,6 +82,8 @@ public class App extends Application {
             hideEffect.TestEffect(frame, rect);
             Show showEffect = new Show(200);
             showEffect.TestEffect(frame, rect);
+            Jump jumpEffect = new Jump(250, 300, 300);
+            jumpEffect.TestEffect(frame, line);
         }
     }
 }

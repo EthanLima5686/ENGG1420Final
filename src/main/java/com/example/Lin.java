@@ -154,4 +154,10 @@ public class Lin extends MasterShape{
     public void Hide(){
         this.hidden = true;
     }
+    public void Jump(int xTrans, int yTrans){
+        endX += xTrans - startX;
+        endY += yTrans - startY;
+        startX = xTrans;
+        startY = yTrans;
+    }
 }

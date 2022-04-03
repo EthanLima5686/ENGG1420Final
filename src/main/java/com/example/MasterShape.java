@@ -31,4 +31,7 @@ public class MasterShape {
     public void Show(){
         this.hidden = false;
     }
+    public void Jump(int xTrans, int yTrans){
+        return;
+    }
 }
