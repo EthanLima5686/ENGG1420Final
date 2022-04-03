@@ -9,7 +9,6 @@ import javafx.scene.shape.*;
 import javafx.stage.Stage;
 import java.lang.Thread;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.io.IOException;
 
