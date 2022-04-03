@@ -106,7 +106,7 @@ public class Cir extends MasterShape {
 
     public Circle Draw(){
         if (!this.hidden){
-            Circle c = new Circle(x_circle, y_circle, radius);
+            Circle c = new Circle(x, y, radius);
             c.setFill(Color.rgb(r, g, b));
             return c;
         } else {
@@ -119,7 +119,7 @@ public class Cir extends MasterShape {
             if (border_Circle < 0){
                 throw new Exception("Invalid border thickness");
             } else {
-                Circle c_border = new Circle(x_circle, y_circle, radius+border_Circle);
+                Circle c_border = new Circle(x, y, radius+border_Circle);
                 c_border.setFill(Color.rgb(r_border, g_border, b_border));
                 return c_border;
             }
