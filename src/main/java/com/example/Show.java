@@ -1,8 +1,10 @@
 package com.example;
 
 public class Show extends Effect{
+
+    int start;
     
-    public Show(int start, int frame){
-        super(start, frame);
+    public Show(int start){
+        super(start);
     }
 }
