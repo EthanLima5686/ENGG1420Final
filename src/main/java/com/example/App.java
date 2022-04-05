@@ -39,13 +39,12 @@ public class App extends Application {
         
     }
     /**
-     * 
-     * @param args The command line arguments that this code doesn't use
-     * @Description The main function, just exists to satisfy java's needs to be the most annoying
+     * The main function, just exists to satisfy java's needs to be the most annoying
      * language in terms of adding a million and a half keywords to every basic thing.
      * 
      * Ignore that it is 400 lines long, 
      * I could make it a bunch of functions but it's more fun to scroll :)
+     * @param args The command line arguments that this code doesn't use
      */
     public static void main(String[] args) {
         ArrayList<String> animationData = new ArrayList<String>();
