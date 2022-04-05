@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.ArrayList;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
@@ -14,13 +15,22 @@ public class Cir extends MasterShape {
     int r_border = 0;
     int g_border = 255;
     int b_border = 0;
-
-    public Cir(int radius, int x, int y, int border_Circle){
-        super(x, y);
+    public ArrayList<Effect> effects;
+    /**
+     * The Circle class of our animation library.
+     * @param radius The radius of the circle
+     * @param x The x [horizontal] position of the circle
+     * @param y The y [vertical] position of the circle
+     * @param border_Circle The width of the border of the circle
+     * @param effects The effects that will be applied to the circle
+     */
+    public Cir(int radius, int x, int y, int border_Circle, ArrayList<Effect> effects){
+        super(x, y, effects);
         this.radius = radius;
         this.x = x;
         this.y = y;
         this.border_Circle = border_Circle;
+        this.effects = effects;
     }
 
     public void setRadius(int radius){
@@ -103,6 +113,11 @@ public class Cir extends MasterShape {
         return b_border;
     }
 
+    /**
+     * Creates a circle with the settings provided in this object
+     * @return JavaFX Circle Class
+     */
+
     public Circle Draw(){
         if (!this.hidden){
             Circle c = new Circle(x, y, radius);
@@ -112,6 +127,11 @@ public class Cir extends MasterShape {
             return null;
         }
     }
+
+    /**
+     * Creates a border of a circle with the settings provided in this object
+     * @return JavaFX Circle Class
+     */
 
     public Circle DrawBorder() throws Exception{
         if (!this.hidden){
@@ -127,16 +147,30 @@ public class Cir extends MasterShape {
         }
     }
 
-    public void ChangeColour(Color color){
-        this.r = (int)Math.round(color.getRed() * 255);
-        this.g = (int)Math.round(color.getGreen() * 255);
-        this.b = (int)Math.round(color.getBlue() * 255);
+    /**
+     * Changes the colour of the circle
+     */
+
+    public void ChangeColour(Color colour){
+        this.r = (int)Math.round(colour.getRed() * 255);
+        this.g = (int)Math.round(colour.getGreen() * 255);
+        this.b = (int)Math.round(colour.getBlue() * 255);
     }
+
+    /**
+     * Hides the circle
+     */
+
     public void Hide(){
         this.hidden = true;
     }
+
+    /**
+     * Moves the circle to a new position
+     */
     public void Jump(int xTrans, int yTrans){
         x = xTrans;
         y = yTrans;
     }
+    
 }

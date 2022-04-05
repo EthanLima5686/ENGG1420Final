@@ -1,4 +1,6 @@
 package com.example;
+import java.util.ArrayList;
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 
@@ -11,14 +13,23 @@ public class Rect extends MasterShape {
     int xTrans;
     int yTrans;
     int r = 0;
-    int b = 255;
+    int b = 0;
     int g = 0;
-    int red_border = 255;
+    int red_border = 0;
     int blue_border = 0;
     int green_border = 0;
 
-    public Rect(int length, int width, int x, int y, int border_Rectangle){
-        super(x, y);
+    /**
+     * The Rectangle Class of our Animation Library
+     * @param length The length of the rectangle
+     * @param width The width of the rectangle
+     * @param x The x-position of the left side of the rectangle
+     * @param y The y-position of the top of the rectangle
+     * @param border_Rectangle The width of the border of the rectangle
+     * @param effects The effects that will be applied to the rectangle
+     */
+    public Rect(int length, int width, int x, int y, int border_Rectangle, ArrayList<Effect> effects){
+        super(x, y, effects);
         this.length = length;
         this.width = width;
         this.border_Rectangle = border_Rectangle;
@@ -116,7 +127,7 @@ public class Rect extends MasterShape {
 
     public Rectangle Draw(){
         if (!this.hidden){
-            Rectangle rec = new Rectangle(x, y, x+length, y+width);
+            Rectangle rec = new Rectangle(x, y, length, width);
             rec.setFill(Color.rgb(r, g, b));
             return rec;
         } else {
@@ -130,7 +141,7 @@ public class Rect extends MasterShape {
             {
                 throw new Exception("Invalid border thickness");
             } else {
-                Rectangle rBorder = new Rectangle(x-border_Rectangle, y-border_Rectangle, x+length+(2*border_Rectangle), y+width+(2*border_Rectangle));
+                Rectangle rBorder = new Rectangle(x-border_Rectangle, y-border_Rectangle, length+(2*border_Rectangle), width+(2*border_Rectangle));
                 rBorder.setFill(Color.rgb(red_border, blue_border, green_border));
                 return rBorder;
             }

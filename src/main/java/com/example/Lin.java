@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.ArrayList;
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -18,14 +20,25 @@ public class Lin extends MasterShape{
     int r_border = 50;
     int g_border = 50;
     int b_border = 50;
+    public ArrayList<Effect> effects;
 
-    public Lin(int startX, int startY, int endX, int endY, int border_Line){
-        super(startX, startY);
+    /**
+     * The Line class of our animation library
+     * @param startX The 1st x position of the line
+     * @param startY The 1st y position of the line
+     * @param endX The 2nd x position of the line
+     * @param endY The 2nd y position of the line
+     * @param border_Line The thickness of the border
+     * @param effects The effects to apply to the line
+     */
+    public Lin(int startX, int startY, int endX, int endY, int border_Line, ArrayList<Effect> effects){
+        super(startX, startY, effects);
         this.startX = startX;
         this.startY = startY;
         this.endX = endX;
         this.endY = endY;
         this.border_Line = border_Line;
+        this.effects = effects;
     }
 
     public void setStartX(int startX){
@@ -115,7 +128,10 @@ public class Lin extends MasterShape{
     public int getB_Border(int b_border){
         return b_border;
     }
-
+    /**
+     * Draws a line with the settings of the object
+     * @return JavaFX Line
+     */
     public Line Draw(){
         if (!this.hidden){
             Line lin = new Line(startX, startY, endX, endY);
@@ -125,7 +141,10 @@ public class Lin extends MasterShape{
             return null;
         }
     }
-
+    /**
+     * Draws a border based on the settings of the object
+     * @return JavaFX Shape
+     */
     public Shape DrawBorder(){
         if (!this.hidden){
             Circle circ1 = new Circle(startX, startY, border_Line);
