@@ -13,6 +13,7 @@ import java.io.IOException;
 
 /**
  * JavaFX App
+ * @authors Ethan Lima, Ryan Bertola, Sashwat Sridhar, Connor Johnson
  */
 public class App extends Application {
     Group root = new Group();
@@ -103,6 +104,7 @@ public class App extends Application {
                     int circleRadius = 0;
                     int circleBorder = 0;
                     Color circleColour = Color.rgb(0, 0, 0);
+                    Color circleBorderColour = Color.rgb(0, 0, 0);
                     ArrayList<Effect> circleEffects = new ArrayList<>();
                     for(String i: shapeData){
                         if(i.startsWith("x:") && circleX == 0){
@@ -130,6 +132,12 @@ public class App extends Application {
                             String[] rgb = strings[1].split(",");
                             if (circleColour.getRed() == 0 && circleColour.getBlue() == 0 && circleColour.getGreen() == 0)
                                 circleColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2])); // Converts to colour variable
+                        }
+                        if(i.toLowerCase().startsWith("bordercolor:")){
+                            String[] strings = i.split(" ");  // ["color:", "#,#,#"]
+                            String[] rgb = strings[1].split(",");
+                            if (circleBorderColour.getRed() == 0 && circleBorderColour.getBlue() == 0 && circleBorderColour.getGreen() == 0)
+                                circleBorderColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2])); // Converts to colour variable
                         }
                         if(i.toLowerCase().startsWith("hide")){
                             String startTime = shapeData.get(index + 1);
@@ -226,6 +234,9 @@ public class App extends Application {
                     c.r = (int)(circleColour.getRed() * 255);
                     c.g = (int)(circleColour.getGreen() * 255);
                     c.b = (int)(circleColour.getBlue() * 255);
+                    c.r_border = (int)(circleBorderColour.getRed() * 255);
+                    c.g_border = (int)(circleBorderColour.getGreen() * 255);
+                    c.b_border = (int)(circleBorderColour.getBlue() * 255);
                     shapesList.add(c);
                     break;
                 case "rect":
@@ -235,6 +246,7 @@ public class App extends Application {
                     int width = 0;
                     int rectBorder = 0;
                     Color rectColour = Color.rgb(0, 0, 0);
+                    Color rectBorderColour = Color.rgb(0, 0, 0);
                     ArrayList<Effect> rectEffects = new ArrayList<>();
                     for(String i: shapeData){
                         System.out.println(i);
@@ -268,6 +280,12 @@ public class App extends Application {
                             String[] rgb = strings[1].split(",");
                             if (rectColour.getRed() == 0 && rectColour.getBlue() == 0 && rectColour.getGreen() == 0)
                                 rectColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2])); // Converts to colour variable
+                        }
+                        if(i.toLowerCase().startsWith("bordercolor:")){
+                            String[] strings = i.split(" ");  // ["color:", "#,#,#"]
+                            String[] rgb = strings[1].split(",");
+                            if (rectBorderColour.getRed() == 0 && rectBorderColour.getBlue() == 0 && rectBorderColour.getGreen() == 0)
+                                rectBorderColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2])); // Converts to colour variable
                         }
                         if(i.toLowerCase().startsWith("hide")){
                             String startTime = shapeData.get(index + 1);
@@ -365,6 +383,9 @@ public class App extends Application {
                     r.r = (int)(rectColour.getRed() * 255);
                     r.g = (int)(rectColour.getGreen() * 255);
                     r.b = (int)(rectColour.getBlue() * 255);
+                    r.red_border = (int)(rectBorderColour.getRed() * 255);
+                    r.green_border = (int)(rectBorderColour.getGreen() * 255);
+                    r.blue_border = (int)(rectBorderColour.getBlue() * 255);
                     shapesList.add(r);
                     break;
                 case "line":
@@ -374,6 +395,7 @@ public class App extends Application {
                     int endY = 0;
                     int lineBorder = 0;
                     Color lineColour = Color.rgb(0, 0, 0);
+                    Color lineBorderColour = Color.rgb(0, 0, 0);
                     ArrayList<Effect> lineEffects = new ArrayList<>();
                     for(String i: shapeData){
                         System.out.println(i);
@@ -407,6 +429,12 @@ public class App extends Application {
                             String[] rgb = strings[1].split(",");
                             if (lineColour.getRed() == 0 && lineColour.getBlue() == 0 && lineColour.getGreen() == 0)
                                 lineColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2])); // Converts to colour variable
+                        }
+                        if(i.toLowerCase().startsWith("bordercolor:")){
+                            String[] strings = i.split(" ");  // ["color:", "#,#,#"]
+                            String[] rgb = strings[1].split(",");
+                            if (lineBorderColour.getRed() == 0 && lineBorderColour.getBlue() == 0 && lineBorderColour.getGreen() == 0)
+                                lineBorderColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2])); // Converts to colour variable
                         }
                         if(i.toLowerCase().startsWith("hide")){
                             String startTime = shapeData.get(index + 1);
