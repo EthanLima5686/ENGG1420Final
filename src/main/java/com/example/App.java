@@ -49,9 +49,13 @@ public class App extends Application {
      */
     public static void main(String[] args) {
         ArrayList<String> animationData = new ArrayList<String>();
+        /*
         animationData.addAll(Arrays.asList("frames: 1000", "speed: 10fps", "2", " ", "circle", "r: 10", "x: 50", 
         "y: 50", "color: 255,0,0", "effect", "Show", "start: 10", "effect", "Jump", "start: 20", "x: 30", "y: 30", " ", 
         "Rect", "length: 100", "width: 50", "x: 25", "y: 25", "border: 5", "effect", "Hide", "start: 15", "effect", "Show", "start: 30", "effect", "Jump", "start: 50", "x: 200", "y: 200", " "));
+        */
+       
+        animationData = FileHandler.ReadFile("./src/main/java/com/example/input.txt");
 
         for(String i: animationData){
             if(i.startsWith("frames")){
@@ -93,8 +97,10 @@ public class App extends Application {
                 }
             }
 
-            for (int j = removeUntil; j >= 0; j--)
-                animationData.remove(j);
+            for (int j = removeUntil; j >= 0; j--){
+                if (j != animationData.size())
+                    animationData.remove(j);
+            }
 
             int index = 0;
             switch (shapeData.get(0).toLowerCase()) {
@@ -128,13 +134,13 @@ public class App extends Application {
                             circleBorder = b;
                         }
                         if(i.startsWith("color:")){
-                            String[] strings = i.split(" ");  // ["color:", "#,#,#"]
+                            String[] strings = i.replaceAll("\\s+","").split(":");  // ["color", "#,#,#"]
                             String[] rgb = strings[1].split(",");
                             if (circleColour.getRed() == 0 && circleColour.getBlue() == 0 && circleColour.getGreen() == 0)
                                 circleColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2])); // Converts to colour variable
                         }
                         if(i.toLowerCase().startsWith("bordercolor:")){
-                            String[] strings = i.split(" ");  // ["color:", "#,#,#"]
+                            String[] strings = i.replaceAll("\\s+","").split(":");  // ["color", "#,#,#"]
                             String[] rgb = strings[1].split(",");
                             if (circleBorderColour.getRed() == 0 && circleBorderColour.getBlue() == 0 && circleBorderColour.getGreen() == 0)
                                 circleBorderColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2])); // Converts to colour variable
@@ -163,7 +169,7 @@ public class App extends Application {
                                 startTime = Integer.parseInt(strings[1]);
                             }
                             if (arg1.toLowerCase().startsWith("color:")){
-                                String[] strings = arg1.split(" ");
+                                String[] strings = arg1.replaceAll("\\s+","").split(":");  // ["color", "#,#,#"]
                                 String[] rgb = strings[1].split(",");
                                 newColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2]));
                             }
@@ -172,7 +178,7 @@ public class App extends Application {
                                 startTime = Integer.parseInt(strings[1]);
                             }
                             if (arg2.toLowerCase().startsWith("color:")){
-                                String[] strings = arg2.split(" ");
+                                String[] strings = arg2.replaceAll("\\s+","").split(":");  // ["color", "#,#,#"]
                                 String[] rgb = strings[1].split(",");
                                 newColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2]));
                             }
@@ -249,7 +255,6 @@ public class App extends Application {
                     Color rectBorderColour = Color.rgb(0, 0, 0);
                     ArrayList<Effect> rectEffects = new ArrayList<>();
                     for(String i: shapeData){
-                        System.out.println(i);
                         if(i.startsWith("x:") && rectX == 0){
                             String[] strings =  i.split(" ");  // ["x:", "#"]
                             int xPos = Integer.parseInt(strings[1]); // Parses "#" to #
@@ -276,13 +281,13 @@ public class App extends Application {
                             rectBorder = b;
                         }
                         if(i.startsWith("color:")){
-                            String[] strings = i.split(" ");  // ["color:", "#,#,#"]
+                            String[] strings = i.replaceAll("\\s+","").split(":");  // ["color", "#,#,#"]
                             String[] rgb = strings[1].split(",");
                             if (rectColour.getRed() == 0 && rectColour.getBlue() == 0 && rectColour.getGreen() == 0)
                                 rectColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2])); // Converts to colour variable
                         }
                         if(i.toLowerCase().startsWith("bordercolor:")){
-                            String[] strings = i.split(" ");  // ["color:", "#,#,#"]
+                            String[] strings = i.replaceAll("\\s+","").split(":");  // ["color", "#,#,#"]
                             String[] rgb = strings[1].split(",");
                             if (rectBorderColour.getRed() == 0 && rectBorderColour.getBlue() == 0 && rectBorderColour.getGreen() == 0)
                                 rectBorderColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2])); // Converts to colour variable
@@ -311,7 +316,7 @@ public class App extends Application {
                                 startTime = Integer.parseInt(strings[1]);
                             }
                             if (arg1.toLowerCase().startsWith("color:")){
-                                String[] strings = arg1.split(" ");
+                                String[] strings = arg1.replaceAll("\\s+","").split(":");  // ["color", "#,#,#"]
                                 String[] rgb = strings[1].split(",");
                                 newColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2]));
                             }
@@ -320,7 +325,7 @@ public class App extends Application {
                                 startTime = Integer.parseInt(strings[1]);
                             }
                             if (arg2.toLowerCase().startsWith("color:")){
-                                String[] strings = arg2.split(" ");
+                                String[] strings = arg2.replaceAll("\\s+","").split(":");  // ["color", "#,#,#"]
                                 String[] rgb = strings[1].split(",");
                                 newColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2]));
                             }
@@ -378,7 +383,6 @@ public class App extends Application {
                         }
                         index++;
                     }
-                    System.out.println(rectEffects.size());
                     Rect r = new Rect(length, width, rectX, rectY, rectBorder, rectEffects);
                     r.r = (int)(rectColour.getRed() * 255);
                     r.g = (int)(rectColour.getGreen() * 255);
@@ -398,7 +402,6 @@ public class App extends Application {
                     Color lineBorderColour = Color.rgb(0, 0, 0);
                     ArrayList<Effect> lineEffects = new ArrayList<>();
                     for(String i: shapeData){
-                        System.out.println(i);
                         if(i.toLowerCase().startsWith("startx:") && startX == 0){
                             String[] strings =  i.split(" "); 
                             int xPos = Integer.parseInt(strings[1]); // Parses "#" to #
@@ -425,13 +428,13 @@ public class App extends Application {
                             lineBorder = b;
                         }
                         if(i.startsWith("color:")){
-                            String[] strings = i.split(" "); 
+                            String[] strings = i.replaceAll("\\s+","").split(":");  // ["color", "#,#,#"]
                             String[] rgb = strings[1].split(",");
                             if (lineColour.getRed() == 0 && lineColour.getBlue() == 0 && lineColour.getGreen() == 0)
                                 lineColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2])); // Converts to colour variable
                         }
                         if(i.toLowerCase().startsWith("bordercolor:")){
-                            String[] strings = i.split(" ");  // ["color:", "#,#,#"]
+                            String[] strings = i.replaceAll("\\s+","").split(":");  // ["color", "#,#,#"]
                             String[] rgb = strings[1].split(",");
                             if (lineBorderColour.getRed() == 0 && lineBorderColour.getBlue() == 0 && lineBorderColour.getGreen() == 0)
                                 lineBorderColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2])); // Converts to colour variable
@@ -460,7 +463,7 @@ public class App extends Application {
                                 startTime = Integer.parseInt(strings[1]);
                             }
                             if (arg1.toLowerCase().startsWith("color:")){
-                                String[] strings = arg1.split(" ");
+                                String[] strings = arg1.replaceAll("\\s+","").split(":");  // ["color", "#,#,#"]
                                 String[] rgb = strings[1].split(",");
                                 newColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2]));
                             }
@@ -469,7 +472,7 @@ public class App extends Application {
                                 startTime = Integer.parseInt(strings[1]);
                             }
                             if (arg2.toLowerCase().startsWith("color:")){
-                                String[] strings = arg2.split(" ");
+                                String[] strings = arg1.replaceAll("\\s+","").split(":");  // ["color", "#,#,#"]
                                 String[] rgb = strings[1].split(",");
                                 newColour = Color.rgb(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2]));
                             }
@@ -527,7 +530,6 @@ public class App extends Application {
                         }
                         index++;
                     }
-                    System.out.println(lineEffects.size());
                     Lin l = new Lin(startX, startY, endX, endY, lineBorder, lineEffects);
                     l.r = (int)(lineColour.getRed() * 255);
                     l.g = (int)(lineColour.getGreen() * 255);
