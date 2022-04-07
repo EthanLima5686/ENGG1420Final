@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * JavaFX App
- * @authors Ethan Lima, Ryan Bertola, Sashwat Sridhar, Connor Johnson
+ * @authors Ethan Lima, Ryan Bertola, and Sashwat Sridhar
  */
 public class App extends Application {
     Group root = new Group();
