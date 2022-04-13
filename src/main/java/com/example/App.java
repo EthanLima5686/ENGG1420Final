@@ -9,11 +9,14 @@ import javafx.scene.shape.*;
 import javafx.stage.Stage;
 import java.lang.Thread;
 import java.util.*;
+
+import static com.example.InputFiles.ReadFile;
+
 import java.io.IOException;
 
 /**
  * JavaFX App
- * @authors Ethan Lima, Ryan Bertola, and Sashwat Sridhar
+ * @authors Connor Johnson, Ethan Lima, Ryan Bertola, and Sashwat Sridhar
  */
 public class App extends Application {
     Group root = new Group();
@@ -45,16 +48,13 @@ public class App extends Application {
      * Ignore that it is 400 lines long, 
      * I could make it a bunch of functions but it's more fun to scroll :)
      * @param args The command line arguments that this code doesn't use
+     * @throws IOException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ArrayList<String> animationData = new ArrayList<String>();
-        /*
-        animationData.addAll(Arrays.asList("frames: 1000", "speed: 10fps", "2", " ", "circle", "r: 10", "x: 50", 
-        "y: 50", "color: 255,0,0", "effect", "Show", "start: 10", "effect", "Jump", "start: 20", "x: 30", "y: 30", " ", 
-        "Rect", "length: 100", "width: 50", "x: 25", "y: 25", "border: 5", "effect", "Hide", "start: 15", "effect", "Show", "start: 30", "effect", "Jump", "start: 50", "x: 200", "y: 200", " "));
-        */
+        
        
-        animationData = FileHandler.ReadFile("./src/main/java/com/example/input.txt");
+        animationData = ReadFile("./src/main/java/com/example/input.txt");
 
         for(String i: animationData){
             if(i.startsWith("frames")){
